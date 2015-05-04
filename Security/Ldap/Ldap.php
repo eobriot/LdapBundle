@@ -118,11 +118,12 @@ class Ldap implements LdapInterface
         $authenticatedRole = 'ROLE_USER',
         $adminDn           = null,
         $adminPassword     = null,
+        $filterAttributes  = "*",
         $version           = 3,
         $useSsl            = false,
         $useStartTls       = false,
-        $optReferrals      = false,
-        $filterAttributes  = "*"
+        $optReferrals      = false
+
     )
     {
         if (!extension_loaded('ldap')) {
