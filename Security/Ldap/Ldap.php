@@ -142,7 +142,7 @@ class Ldap implements LdapInterface
         $this->useStartTls       = (boolean) $useStartTls;
         $this->optReferrals      = (boolean) $optReferrals;
         $this->connection        = null;
-        $this->filterAttibutes   = $filterAttributes;
+        $this->filterAttributes   = $filterAttributes;
     }
 
     /**
@@ -536,6 +536,22 @@ class Ldap implements LdapInterface
         }
 
         return $roles;
+    }
+
+    /**
+     * @return array
+     */
+
+    public function getAttributesArray() {
+        $result = array();
+        $values = $this->getBoundListing();
+
+        foreach($values as $key => $value) {
+            if (is_array($value)) {
+                $result[$key] = $value[0];
+            }
+        }
+        return $result;
     }
 
     /**

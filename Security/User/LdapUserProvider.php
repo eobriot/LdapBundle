@@ -73,6 +73,7 @@ class LdapUserProvider implements LdapUserProviderInterface
         }
 
         $roleArray = $this->ldap->getBoundRolesByOrgs();
+        $attributesArray = $this->ldap->getAttributesArray();
 
         $user = new LdapUser($username, null, $roleArray);
         $user->setLdapListing($this->ldap->getBoundListing());
