@@ -90,6 +90,11 @@ class Ldap implements LdapInterface
     private $connection;
 
     /**
+     * @var string
+     */
+    private $filterAttributes;
+
+    /**
      * contructor
      *
      * @param string $host
@@ -116,7 +121,8 @@ class Ldap implements LdapInterface
         $version           = 3,
         $useSsl            = false,
         $useStartTls       = false,
-        $optReferrals      = false
+        $optReferrals      = false,
+        $filterAttributes  = "*"
     )
     {
         if (!extension_loaded('ldap')) {
@@ -135,6 +141,7 @@ class Ldap implements LdapInterface
         $this->useStartTls       = (boolean) $useStartTls;
         $this->optReferrals      = (boolean) $optReferrals;
         $this->connection        = null;
+        $this->filterAttibutes   = $filterAttributes;
     }
 
     /**
@@ -321,6 +328,8 @@ class Ldap implements LdapInterface
      */
     public function findByUsername($username, $query, $filter = '*')
     {
+        //FIXME A nettoyer...
+        $filter = $this->filterAttributes;
         $listings = $this->findListingsByUsername($username, $query, $filter);
         if (0 === $listings['count']) {
             return null;
