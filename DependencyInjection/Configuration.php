@@ -61,8 +61,8 @@ class Configuration implements ConfigurationInterface
                     ->info('Attribute to use to find user')
                 ->end()
                 ->arrayNode('filterAttributes')
-
-                    ->info('Filtre pour la récupératino des attributs dans le LDAP')
+                    ->prototype('scalar')
+                    ->info('Filtre pour la récupération des attributs dans le LDAP')
                 ->end()
             ->end()
         ;
