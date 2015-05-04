@@ -60,7 +60,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('uid')
                     ->info('Attribute to use to find user')
                 ->end()
-                ->arrayNode('filterAttribute')
+                ->arrayNode('filterAttributes')
 
                     ->info('Filtre pour la récupératino des attributs dans le LDAP')
                 ->end()

@@ -31,6 +31,7 @@ class LCStudiosLdapExtension extends Extension
         $container->setParameter('lc_studios_ldap.authenticated_role', $config['authenticated_role']);
         $container->setParameter('lc_studios_ldap.bind_user.dn', $config['bind_user']['dn']);
         $container->setParameter('lc_studios_ldap.bind_user.password', $config['bind_user']['password']);
+        $container->setParameter('lc_studios_ldap.filterAttributes', $config['filterAttributes']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
