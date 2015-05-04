@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->scalarNode('host')
-
+                    ->defaultValue('localhost')
                     ->info('LDAP server host')
                 ->end()
                 ->integerNode('port')
@@ -61,7 +61,7 @@ class Configuration implements ConfigurationInterface
                     ->info('Attribute to use to find user')
                 ->end()
                 ->arrayNode('filterAttribute')
-                    ->defaultValue('*')
+
                     ->info('Filtre pour la récupératino des attributs dans le LDAP')
                 ->end()
             ->end()
