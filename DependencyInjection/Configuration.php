@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->scalarNode('host')
-                    ->defaultValue('localhost')
+
                     ->info('LDAP server host')
                 ->end()
                 ->integerNode('port')
