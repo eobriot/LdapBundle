@@ -15,11 +15,13 @@ class LdapUser implements LdapUserInterface
     private $credentialsNonExpired;
     private $accountNonLocked;
     private $roles;
+    private $attributes;
 
     public function __construct(
         $username,
         $password,
         array $roles = array(),
+        array $attributes = array(),
         $enabled = true,
         $userNonExpired = true,
         $credentialsNonExpired = true,
@@ -36,6 +38,7 @@ class LdapUser implements LdapUserInterface
         $this->credentialsNonExpired = $credentialsNonExpired;
         $this->accountNonLocked = $userNonLocked;
         $this->roles = $roles;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -119,5 +122,22 @@ class LdapUser implements LdapUserInterface
         return $this->ldapListing;
     }
 
+    /**
+     * @param $attribute
+     * @return string
+     */
+    public function getAttribute($attribute) {
+        if (array_key_exists($attribute, $this->attributes)) {
+            return $this->attributes[$attribute];
+        } else {
+            return null;
+        }
+    }
+
+    public function __get($field) {
+        if (array_key_exists($field, $this->attributes)) {
+            return $this->attributes[$field];
+        }
+    }
     // @todo maybe some getter/setter magic methods for the LDAP listing?
 }

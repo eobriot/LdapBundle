@@ -104,6 +104,7 @@ class Ldap implements LdapInterface
      * @param string $authenticatedRole
      * @param string $adminDn
      * @param string $adminPassword
+     * @param array filterAttributes
      * @param integer $version
      * @param boolean $useSsl
      * @param boolean $useStartTls
