@@ -341,6 +341,8 @@ class Ldap implements LdapInterface
 
     public function findListingsByUsername($username, $query, $filter = '*')
     {
+        //FIXME A nettoyer...
+        $filter = $this->filterAttributes;
         if (!$this->connection) {
             $this->connect();
         }
